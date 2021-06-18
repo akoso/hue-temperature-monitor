@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
+    "mongodb": "^3.6.9",
     "node-hue-api": "^5.0.0-beta.2",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.4"
@@ -18,6 +19,7 @@
     "node": ">=14.0.0"
   },
   "devDependencies": {
+    "@types/mongodb": "^3.6.18",
     "@types/node": "^15.12.3"
   }
 }
