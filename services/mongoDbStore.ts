@@ -1,5 +1,6 @@
 import {MongoClient, Db} from 'mongodb'
 import {config} from '../config'
+import {Measurement} from './hueConnector'
 
 const connectToDb = async (): Promise<{db: Db, client: MongoClient}> => {
     if (!config.mongoUri) {
@@ -23,7 +24,7 @@ const closeConnection = async (client?: MongoClient) => {
     }
 }
 
-export const saveMeasurementToDb = async (temperature: number): Promise<void> => {
+export const saveMeasurementToDb = async (temperatureReading: Measurement): Promise<void> => {
     let mongoClient
     try {
         const {client, db} = await connectToDb()
@@ -31,7 +32,8 @@ export const saveMeasurementToDb = async (temperature: number): Promise<void> =>
 
         db.collection('readings').insertOne({
             time: new Date(),
-            temperature,
+            temperature: temperatureReading.temperature,
+            lastUpdated: temperatureReading.lastUpdated,
         })
 
     } finally {
