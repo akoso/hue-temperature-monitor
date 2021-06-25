@@ -18,7 +18,7 @@ const getTemperatureMeasurement = async (): Promise<void> => {
 
     await saveMeasurementToDb(temperature)
 
-    console.log(`[${new Date()}] ${temperature.temperature} C`)
+    console.log(`[${new Date()}] ${temperature.temperature} C taken at ${temperature.lastUpdated}`)
 }
 
 getTemperatureMeasurement()
